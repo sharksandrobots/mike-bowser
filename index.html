@@ -2,39 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{% if entry is defined %}
-	{% set title = 'AP Definitive Source' | t  ~ ' | ' ~ entry.title %}
-	{% if entry.type == 'news' %}
-		{# Post page #}
-		{% set description = entry.teaser | truncate('chars', 150, '...', true) %}
-	{% elseif entry.type == 'contributor' %}
-		{# Contributor page  #}
-		{% set description = 'News posts by' | t  ~ ' ' ~ entry.title %}
-	{% else %}
-		{# Plain page #}
-	    {% set description = entry.body is defined ? entry.body | truncate('chars', 150, '...', true) : seo.defaultSeoDescription %}
-	{% endif %}
-{% else %}
-   {% set title = seo.defaultSeoTitle %}
-   {% set description = seo.defaultSeoDescription %}
-{% endif %}
 
-<title>{{ title }}</title>
-<meta name="description" content="{{ description }}"/>
-<meta property="og:åtitle" content="{{ title }}"/>
-<meta property="og:description" content="{{ description }}"/>
+<title>This is a test</title>
+<meta name="description" content="description"/>
+<meta property="og:åtitle" content="Title"/>
+<meta property="og:description" content="description"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="{{ craft.request.url }}"/>
+<meta property="og:url" content="https://mikebowser.com/"/>
 <meta name="twitter:widgets:csp" content="on">
 <meta name="twitter:card" content="summary_large_image">
-{% if entry.featureImage is defined and entry.featureImage.first %}
-	{% set image = entry.featureImage.first %}
-	<meta property="og:image" content="{{ image.url }}"/>
+
+	<meta property="og:image" content="https://mikebowser.com/"/>
 	<meta name="twitter:image" content="USM_ap-images-brochure_hires_1-10-18-1.png">
-{% else %}
 	<meta property="og:image" content="https://blog.ap.org/uploads/site/share-definitive-source.jpg"/>
 	<meta name="twitter:image" content="https://blog.ap.org/uploads/site/share-definitive-source.jpg">
-{% endif %}
 	
 	
 <link rel="stylesheet" href="{{ assetUrl('css/bootstrap.css' | bust) }}">
@@ -46,7 +27,6 @@
 <!--favicon -->
 <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/icon" />
 
-{% include '_fields/gaCode' %}
 
 
 <!DOCTYPE html>
